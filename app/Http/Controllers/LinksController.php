@@ -44,7 +44,7 @@ class LinksController extends Controller
     }
 
     /**
-         * Redirect.
+         * Redirect to specific url.
          *
          * @return \Illuminate\Http\Response
          */
