@@ -31,8 +31,7 @@ class LinksController extends Controller
     {
         $link = Link::where('url', $request->link)->first();
         if ($link) {
-            \Session::set('link', $link->hash);
-            return back();
+            return back()->with('link', $link->hash);
         }
 
         do {
@@ -41,8 +40,7 @@ class LinksController extends Controller
         while (Link::where('hash', $hash)->count() > 0);
 
         Link::create(['url' => $request->link, 'hash' => $hash]);
-        \Session::set('link', $hash);
-        return back();
+        return back()->with('link', $hash);
     }
 
     /**
@@ -55,6 +53,6 @@ class LinksController extends Controller
         if ($link) {
             return redirect($link->url);
         }
-        return redirect('/');
+        return abort(404);
     }
 }
