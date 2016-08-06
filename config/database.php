@@ -69,7 +69,6 @@ return [
         'pgsql' => [
             'driver' => 'pgsql',
             'host' => parse_url(getenv("DATABASE_URL"))["host"],
-            'port' => '5432',
             'database' => substr(parse_url(getenv("DATABASE_URL"))["path"], 1),
             'username' => parse_url(getenv("DATABASE_URL"))["user"],
             'password' => parse_url(getenv("DATABASE_URL"))["pass"],
