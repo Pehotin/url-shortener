@@ -16,7 +16,6 @@ class CreateLinksTable extends Migration
             $table->increments('id');
             $table->text('url');
             $table->string('hash', 400);
-            $table->timestamps();
         });
     }
 
