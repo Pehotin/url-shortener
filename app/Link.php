@@ -8,8 +8,16 @@ class Link extends Model
 {
     protected $fillable = [
         'url',
-        'hash'
+        'hash',
+        'user_id'
     ];
 
-    public $timestamps = false;
+    public function clicks() {
+        return $this->hasMany('Shorty\Click');
+    }
+
+    public function user() {
+        return $this->belongsTo('Shorty\User');
+    }
+
 }

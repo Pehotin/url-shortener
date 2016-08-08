@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateClicksTable extends Migration
+class AddTimestampsToLinkTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,7 @@ class CreateClicksTable extends Migration
      */
     public function up()
     {
-        Schema::create('clicks', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('link_id');
-            $table->string('referer');
-            $table->string('ip');
+        Schema::table('links', function (Blueprint $table) {
             $table->timestamps();
         });
     }
@@ -28,6 +24,9 @@ class CreateClicksTable extends Migration
      */
     public function down()
     {
-        Schema::drop('clicks');
+        Schema::table('links', function (Blueprint $table) {
+            $table->dropColumn('created_at');
+            $table->dropColumn('updated_at');
+        });
     }
 }

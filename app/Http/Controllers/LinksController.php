@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Shorty\Http\Requests;
 use Shorty\Http\Requests\LinkFormRequest;
 use Shorty\Link;
+use Shorty\User;
 
 class LinksController extends Controller
 {
@@ -18,6 +19,11 @@ class LinksController extends Controller
      */
     public function create()
     {
+        if (\Auth::check()) {
+            $user = \Auth::user();
+            $links = Link::where('user_id', $user->id)->get();
+            return view('links.create', compact('links'));
+        }
         return view('links.create');
     }
 
@@ -36,8 +42,13 @@ class LinksController extends Controller
 
         do {
             $hash = str_random(6); 
+        } while (Link::where('hash', $hash)->count() > 0);
+
+        if (\Auth::check()) {
+            $user = \Auth::user();
+            Link::create(['url' => $request->link, 'hash' => $hash, 'user_id' => $user->id]);
+            return back()->with('link', $hash);
         }
-        while (Link::where('hash', $hash)->count() > 0);
 
         Link::create(['url' => $request->link, 'hash' => $hash]);
         return back()->with('link', $hash);

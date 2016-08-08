@@ -11,4 +11,8 @@ class Click extends Model
         'referer',
         'ip'
     ];
+    
+    public function link() {
+        return $this->belongsTo('Shorty\Link');
+    }
 }

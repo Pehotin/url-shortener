@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1 class="text-center">Short your URL</h1>
+    <h1 class="text-center">Shorty</h1>
 
     {{ Form::open(array('url' => '/', 'method' => 'POST')) }}
         <div class="form-group">
@@ -22,4 +22,8 @@
     @endif
 
     @include('links.parts.errors')
+
+    @if(\Auth::check())
+        @include('links.parts.table')
+    @endif
 @stop
