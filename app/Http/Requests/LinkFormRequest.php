@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Requests;
+namespace Shorty\Http\Requests;
 
-use App\Http\Requests\Request;
+use Shorty\Http\Requests\Request;
 
 class LinkFormRequest extends Request
 {

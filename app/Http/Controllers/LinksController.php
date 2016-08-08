@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Shorty\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
-use App\Http\Requests\LinkFormRequest;
-use App\Link;
+use Shorty\Http\Requests;
+use Shorty\Http\Requests\LinkFormRequest;
+use Shorty\Link;
 
 class LinksController extends Controller
 {

@@ -4,12 +4,11 @@ namespace Shorty;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Link extends Model
+class Click extends Model
 {
     protected $fillable = [
-        'url',
-        'hash'
+        'link_id',
+        'referer',
+        'ip'
     ];
-
-    public $timestamps = false;
 }
